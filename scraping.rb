@@ -16,8 +16,6 @@ end
 
 # htmlをパース(解析)してオブジェクトを生成
 doc = Nokogiri::HTML.parse(html.toutf8, nil,"utf-8")
-puts doc.title
-puts ""
 
 doPrint = false;
 str = ""
@@ -35,8 +33,6 @@ doc.css("td").each do |node|
             count = count +1
         end 
     end
-
-    
 
     if word == "NOTES/FREEZE(SHOCK)" then
         doPrint = true

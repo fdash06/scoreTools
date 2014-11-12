@@ -11,17 +11,27 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 <link rel="shortcut icon" href="">
-<link href="style.css" rel="stylesheet" type="text/css">
+<!--<link href="style.css" rel="stylesheet" type="text/css">-->
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css" />
+       <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+       <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+       <script src="script.js"></script>
 </head>
 <body>
-  <table id="musicList">
-   <tr>
-    <th>曲名</th>
-    <th>バージョン</th>
-    <th>BPM</th>
-    <th>NOTES/FA(SA)</th>
-    <th>Score</th>
-   </tr>
-  </table>
+<h1>足17</h1>
+<table id="musicList" data-role="table" data-mode="columntoggle" class="ui-responsive table-stroke">
+    <thead>
+        <tr>
+            <th>曲名</th>
+            <th data-priority="3"><abbr title="Ver.">バージョン</abbr></th>
+            <th data-priority="1"><abbr title="BPM">BPM</abbr></th>
+            <th data-priority="2"><abbr title="NOTES">NOTES/FA(SA)</abbr></th>
+            <th>Score</th>
+        </tr>
+    </thead>
+    <tbody id ="fieldBody">
+    </tbody>
+</table>
+<div id="test"></div>
 </body>
 </html>
