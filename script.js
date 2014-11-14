@@ -33,6 +33,7 @@ $(function(){
             addDataToField(tmp);
         }
 
+        $("#musicList").table("refresh");
     });
 
 });
