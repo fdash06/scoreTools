@@ -14,11 +14,11 @@ $(function(){
     
     function addDataToField(data){
         var tr = $("<tr>");
-        tr.append($("<th>").text(data.title));
-        tr.append($("<th>").text(data.version));
-        tr.append($("<th>").text(data.bpm));
-        tr.append($("<th>").text(data.notes));
-        tr.append($("<th>").text(data.score));
+        tr.append($("<td>").text(data.title));
+        tr.append($("<td>").text(data.version));
+        tr.append($("<td>").text(data.bpm));
+        tr.append($("<td>").text(data.notes));
+        tr.append($("<td>").text(data.score));
         $("#fieldBody").append(tr);
     }
 
@@ -37,3 +37,48 @@ $(function(){
     });
 
 });
+
+/* lion make */
+var flag = 0;
+var tmp;
+
+window.onload = function(){
+    var myTable = document.getElementById('musicList');
+    var len = musicList.rows[1].cells.length;
+    var Td = myTable.getElementsByTagName('td');
+    for(var i=0; i<Td.length; i++){
+	Td[i].setAttribute('id', 'td'+i);
+	Td[i].onclick = function(){
+	    eDit(this.id);
+	}
+    }
+
+    function eDit(id){
+	cellNum = document.getElementById(id).cellIndex;
+	if(len-1 != cellNum){ return;}
+	var Td = document.getElementsByTagName('td');
+	var Spn = document.createElement('span');
+	Spn.setAttribute('contenteditable', 'true');
+	Spn.setAttribute('id', 'Spn'+id);
+	tmp = Td[id].innerHTML;
+	Td[id].innerHTML = "";
+	Td[id].appendChild(Spn);
+	Spn.focus();
+	Spn.onblur = function(){
+	    bLur(id);
+	}
+    }
+
+    function bLur(id){
+	var Spn = document.getElementById('Spn' + id);
+	var str = Spn.innerText;
+	str = Spn.textContent;
+	if(str.match(/[^0-9 . -]|[\s]+/)||str==""){
+	    Td[id].innerHTML = tmp;
+	    return;
+	}
+	Td[id].innerHTML = str;
+    }
+}
+
+
