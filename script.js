@@ -5,8 +5,9 @@ $(function(){
         this.version = version;
         this.bpm = bpm;
         this.notes = notes;
+
         if(score === undefined){
-            this.score = 0;
+	    this.score = 0;
         }else{
             this.score = score;
         }
@@ -41,6 +42,8 @@ $(function(){
 /* lion make */
 var flag = 0;
 var tmp;
+var storage = localStorage;
+var songid;
 
 window.onload = function(){
     var myTable = document.getElementById('musicList');
@@ -48,6 +51,9 @@ window.onload = function(){
     var Td = myTable.getElementsByTagName('td');
     for(var i=0; i<Td.length; i++){
 	Td[i].setAttribute('id', 'td'+i);
+	if(storage.getItem('td'+i) != undefined){
+	    Td[i].innerHTML = storage.getItem('td'+i);
+	}
 	Td[i].onclick = function(){
 	    eDit(this.id);
 	}
@@ -61,6 +67,7 @@ window.onload = function(){
 	Spn.setAttribute('contenteditable', 'true');
 	Spn.setAttribute('id', 'Spn'+id);
 	tmp = Td[id].innerHTML;
+	songid = id;
 	Td[id].innerHTML = "";
 	Td[id].appendChild(Spn);
 	Spn.focus();
@@ -78,6 +85,7 @@ window.onload = function(){
 	    return;
 	}
 	Td[id].innerHTML = str;
+	storage.setItem(songid, str);
     }
 }
 
